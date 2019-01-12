@@ -26,6 +26,7 @@ class LinkedList{
 	LinkedList(){
 		head = NULL;
 		tail = NULL;
+	}
 	//circles inside linked with each other
 	//Q1.insert(int data) - Adds a new element to the end of the linked list.
 	void Insert(int value){
@@ -37,8 +38,10 @@ class LinkedList{
 		if (head == NULL)
 			head = temp;
 		//any other node only
-		else
-			head->next = temp;
+		else{
+			tail->next = temp;
+		}
+			tail = temp;
 		}
 
 	//Q2.insertAt(int pos, int data) - It includes the position at which the insertion happens. Positioning starts with 1.
@@ -61,11 +64,12 @@ class LinkedList{
 			    i++;
 			    current = current->next;
 			}
-		}
+		
 		
 		// Moving ptrs like magic ! if not head //Don't want to change that statement 
 		temp->next = current->next;
 		current->next = temp;
+		}
 		
 		}
 
@@ -88,7 +92,7 @@ class LinkedList{
 		}
 	//Q4.deleteAt(int pos) - Deletes the element(or node) at the position pos
 	void deleteAt (int posn){
-		int =i;
+		int i =1;
 		Node * current = head;
 		if (posn==1){
 			head =current ->next;
@@ -119,13 +123,13 @@ class LinkedList{
 }
 	};
 
-int main () {
+int main() {
 
 	LinkedList l1;
-	l1.insert(1);
-	l1.insert(2);
-	l1.insert(3);
-	l1.insert(4);
+	l1.Insert(1);
+	l1.Insert(2);
+	l1.Insert(3);
+	l1.Insert(4);
 	l1.display();
 		
 	cout << "Where do you need to insert a node?" << endl;
@@ -133,12 +137,14 @@ int main () {
 	cin >> a;
 	cout << "What value to assign in the node?" << endl;
 	cin >> b;
-	l1.inserAt(a,b);
+	l1.insertAt(a,b);
 
 	l1.display();
+	cout << "Now Deleting the last element" <<endl; 
 	l1.deletee();
+	l1.display();
 	
-	cout << "Where do you need to delete a node(enter a value between 1 to 5)?" << endl;
+	cout << "Where do you need to delete a node(enter a value between 1 to 4)?" << endl;
 	int x;
 	cin >> x;
 
